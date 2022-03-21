@@ -1,0 +1,448 @@
+classdef SimoneVoto < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                   matlab.ui.Figure
+        SimoneDeLuca2022Label      matlab.ui.control.Label
+        VotoEditField_16           matlab.ui.control.NumericEditField
+        VotoEditField_16Label      matlab.ui.control.Label
+        CalcoloButton              matlab.ui.control.Button
+        MediaPesataEditField       matlab.ui.control.NumericEditField
+        MediaPesataEditFieldLabel  matlab.ui.control.Label
+        CFUEditField_1             matlab.ui.control.NumericEditField
+        CFUEditFieldLabel          matlab.ui.control.Label
+        VotoEditField_1            matlab.ui.control.NumericEditField
+        VotoEditField_15Label      matlab.ui.control.Label
+        CFUEditField_12            matlab.ui.control.NumericEditField
+        CFUEditField_12Label       matlab.ui.control.Label
+        CFUEditField_11            matlab.ui.control.NumericEditField
+        CFUEditField_11Label       matlab.ui.control.Label
+        CFUEditField_10            matlab.ui.control.NumericEditField
+        CFUEditField_10Label       matlab.ui.control.Label
+        CFUEditField_9             matlab.ui.control.NumericEditField
+        CFUEditField_9Label        matlab.ui.control.Label
+        CFUEditField_8             matlab.ui.control.NumericEditField
+        CFUEditField_8Label        matlab.ui.control.Label
+        CFUEditField_7             matlab.ui.control.NumericEditField
+        CFUEditField_7Label        matlab.ui.control.Label
+        CFUEditField_6             matlab.ui.control.NumericEditField
+        CFUEditField_6Label        matlab.ui.control.Label
+        CFUEditField_5             matlab.ui.control.NumericEditField
+        CFUEditField_5Label        matlab.ui.control.Label
+        CFUEditField_4             matlab.ui.control.NumericEditField
+        CFUEditField_4Label        matlab.ui.control.Label
+        CFUEditField_3             matlab.ui.control.NumericEditField
+        CFUEditField_3Label        matlab.ui.control.Label
+        CFUEditField_2             matlab.ui.control.NumericEditField
+        CFUEditField_2Label        matlab.ui.control.Label
+        VotoEditField_12           matlab.ui.control.NumericEditField
+        VotoEditField_12Label      matlab.ui.control.Label
+        VotoEditField_11           matlab.ui.control.NumericEditField
+        VotoEditField_11Label      matlab.ui.control.Label
+        VotoEditField_10           matlab.ui.control.NumericEditField
+        VotoEditField_10Label      matlab.ui.control.Label
+        VotoEditField_9            matlab.ui.control.NumericEditField
+        VotoEditField_9Label       matlab.ui.control.Label
+        VotoEditField_8            matlab.ui.control.NumericEditField
+        VotoEditField_8Label       matlab.ui.control.Label
+        VotoEditField_7            matlab.ui.control.NumericEditField
+        VotoEditField_7Label       matlab.ui.control.Label
+        VotoEditField_6            matlab.ui.control.NumericEditField
+        VotoEditField_6Label       matlab.ui.control.Label
+        VotoEditField_5            matlab.ui.control.NumericEditField
+        VotoEditField_5Label       matlab.ui.control.Label
+        VotoEditField_4            matlab.ui.control.NumericEditField
+        VotoEditField_4Label       matlab.ui.control.Label
+        VotoEditField_3            matlab.ui.control.NumericEditField
+        VotoEditField_3Label       matlab.ui.control.Label
+        VotoEditField_2            matlab.ui.control.NumericEditField
+        VotoEditField_2Label       matlab.ui.control.Label
+    end
+
+  
+    
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Value changed function: MediaPesataEditField
+        function MediaPesataEditFieldValueChanged(app, event)
+    
+        end
+
+        % Button pushed function: CalcoloButton
+        function CalcoloButtonPushed(app, event)
+		    voto1= app.VotoEditField_1.Value;
+            voto2= app.VotoEditField_2.Value;
+            voto3= app.VotoEditField_3.Value;
+            voto4= app.VotoEditField_4.Value;
+            voto5= app.VotoEditField_5.Value;
+            voto6= app.VotoEditField_6.Value;
+            voto7= app.VotoEditField_7.Value;
+            voto8= app.VotoEditField_8.Value;
+            voto9= app.VotoEditField_9.Value;
+            voto10= app.VotoEditField_10.Value;
+            voto11= app.VotoEditField_11.Value;
+            voto12= app.VotoEditField_12.Value;
+
+		cfu1   = app.CFUEditField_1.Value;
+		cfu2   = app.CFUEditField_2.Value;
+		cfu3   = app.CFUEditField_3.Value;
+		cfu4   = app.CFUEditField_4.Value;
+		cfu5   = app.CFUEditField_5.Value;
+		cfu6   = app.CFUEditField_6.Value;
+		cfu7   = app.CFUEditField_7.Value;
+		cfu8   = app.CFUEditField_8.Value;
+		cfu9   = app.CFUEditField_9.Value;
+		cfu10  = app.CFUEditField_10.Value;
+		cfu11  = app.CFUEditField_11.Value;
+		cfu12  = app.CFUEditField_12.Value;
+        
+        %media pesata
+        media = (voto1*cfu1+voto2*cfu2+voto3*cfu3+voto4*cfu4+voto5*cfu5+voto6*cfu6+voto7*cfu7+voto8*cfu8+voto9*cfu9+voto10*cfu10+voto11*cfu11+voto12*cfu12)/(cfu1+cfu2+cfu3+cfu4+cfu5+cfu6+cfu7+cfu8+cfu9+cfu10+cfu11+cfu12);
+        votopresentazione = media *110/30; 
+        
+        app.MediaPesataEditField.Value=media;
+        app.VotoEditField_16.Value=votopresentazione;
+            
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 413 486];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create VotoEditField_2Label
+            app.VotoEditField_2Label = uilabel(app.UIFigure);
+            app.VotoEditField_2Label.HorizontalAlignment = 'center';
+            app.VotoEditField_2Label.Position = [22 424 30 22];
+            app.VotoEditField_2Label.Text = 'Voto';
+
+            % Create VotoEditField_2
+            app.VotoEditField_2 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_2.HorizontalAlignment = 'center';
+            app.VotoEditField_2.Position = [80 424 100 22];
+
+            % Create VotoEditField_3Label
+            app.VotoEditField_3Label = uilabel(app.UIFigure);
+            app.VotoEditField_3Label.HorizontalAlignment = 'center';
+            app.VotoEditField_3Label.Position = [22 394 30 22];
+            app.VotoEditField_3Label.Text = 'Voto';
+
+            % Create VotoEditField_3
+            app.VotoEditField_3 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_3.HorizontalAlignment = 'center';
+            app.VotoEditField_3.Position = [80 394 100 22];
+
+            % Create VotoEditField_4Label
+            app.VotoEditField_4Label = uilabel(app.UIFigure);
+            app.VotoEditField_4Label.HorizontalAlignment = 'center';
+            app.VotoEditField_4Label.Position = [22 365 30 22];
+            app.VotoEditField_4Label.Text = 'Voto';
+
+            % Create VotoEditField_4
+            app.VotoEditField_4 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_4.HorizontalAlignment = 'center';
+            app.VotoEditField_4.Position = [80 365 100 22];
+
+            % Create VotoEditField_5Label
+            app.VotoEditField_5Label = uilabel(app.UIFigure);
+            app.VotoEditField_5Label.HorizontalAlignment = 'center';
+            app.VotoEditField_5Label.Position = [22 336 30 22];
+            app.VotoEditField_5Label.Text = 'Voto';
+
+            % Create VotoEditField_5
+            app.VotoEditField_5 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_5.HorizontalAlignment = 'center';
+            app.VotoEditField_5.Position = [81 336 100 22];
+
+            % Create VotoEditField_6Label
+            app.VotoEditField_6Label = uilabel(app.UIFigure);
+            app.VotoEditField_6Label.HorizontalAlignment = 'center';
+            app.VotoEditField_6Label.Position = [22 304 30 22];
+            app.VotoEditField_6Label.Text = 'Voto';
+
+            % Create VotoEditField_6
+            app.VotoEditField_6 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_6.HorizontalAlignment = 'center';
+            app.VotoEditField_6.Position = [81 304 100 22];
+
+            % Create VotoEditField_7Label
+            app.VotoEditField_7Label = uilabel(app.UIFigure);
+            app.VotoEditField_7Label.HorizontalAlignment = 'center';
+            app.VotoEditField_7Label.Position = [22 273 30 22];
+            app.VotoEditField_7Label.Text = 'Voto';
+
+            % Create VotoEditField_7
+            app.VotoEditField_7 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_7.HorizontalAlignment = 'center';
+            app.VotoEditField_7.Position = [80 273 100 22];
+
+            % Create VotoEditField_8Label
+            app.VotoEditField_8Label = uilabel(app.UIFigure);
+            app.VotoEditField_8Label.HorizontalAlignment = 'center';
+            app.VotoEditField_8Label.Position = [22 243 30 22];
+            app.VotoEditField_8Label.Text = 'Voto';
+
+            % Create VotoEditField_8
+            app.VotoEditField_8 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_8.HorizontalAlignment = 'center';
+            app.VotoEditField_8.Position = [81 243 100 22];
+
+            % Create VotoEditField_9Label
+            app.VotoEditField_9Label = uilabel(app.UIFigure);
+            app.VotoEditField_9Label.HorizontalAlignment = 'center';
+            app.VotoEditField_9Label.Position = [22 213 30 22];
+            app.VotoEditField_9Label.Text = 'Voto';
+
+            % Create VotoEditField_9
+            app.VotoEditField_9 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_9.HorizontalAlignment = 'center';
+            app.VotoEditField_9.Position = [80 213 100 22];
+
+            % Create VotoEditField_10Label
+            app.VotoEditField_10Label = uilabel(app.UIFigure);
+            app.VotoEditField_10Label.HorizontalAlignment = 'center';
+            app.VotoEditField_10Label.Position = [22 183 30 22];
+            app.VotoEditField_10Label.Text = 'Voto';
+
+            % Create VotoEditField_10
+            app.VotoEditField_10 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_10.HorizontalAlignment = 'center';
+            app.VotoEditField_10.Position = [81 183 100 22];
+
+            % Create VotoEditField_11Label
+            app.VotoEditField_11Label = uilabel(app.UIFigure);
+            app.VotoEditField_11Label.HorizontalAlignment = 'center';
+            app.VotoEditField_11Label.Position = [22 152 30 22];
+            app.VotoEditField_11Label.Text = 'Voto';
+
+            % Create VotoEditField_11
+            app.VotoEditField_11 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_11.HorizontalAlignment = 'center';
+            app.VotoEditField_11.Position = [81 152 100 22];
+
+            % Create VotoEditField_12Label
+            app.VotoEditField_12Label = uilabel(app.UIFigure);
+            app.VotoEditField_12Label.HorizontalAlignment = 'center';
+            app.VotoEditField_12Label.Position = [22 122 30 22];
+            app.VotoEditField_12Label.Text = 'Voto';
+
+            % Create VotoEditField_12
+            app.VotoEditField_12 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_12.HorizontalAlignment = 'center';
+            app.VotoEditField_12.Position = [80 122 100 22];
+
+            % Create CFUEditField_2Label
+            app.CFUEditField_2Label = uilabel(app.UIFigure);
+            app.CFUEditField_2Label.HorizontalAlignment = 'center';
+            app.CFUEditField_2Label.Position = [213 424 30 22];
+            app.CFUEditField_2Label.Text = 'CFU';
+
+            % Create CFUEditField_2
+            app.CFUEditField_2 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_2.HorizontalAlignment = 'center';
+            app.CFUEditField_2.Position = [271 424 100 22];
+
+            % Create CFUEditField_3Label
+            app.CFUEditField_3Label = uilabel(app.UIFigure);
+            app.CFUEditField_3Label.HorizontalAlignment = 'center';
+            app.CFUEditField_3Label.Position = [213 394 30 22];
+            app.CFUEditField_3Label.Text = 'CFU';
+
+            % Create CFUEditField_3
+            app.CFUEditField_3 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_3.HorizontalAlignment = 'center';
+            app.CFUEditField_3.Position = [271 394 100 22];
+
+            % Create CFUEditField_4Label
+            app.CFUEditField_4Label = uilabel(app.UIFigure);
+            app.CFUEditField_4Label.HorizontalAlignment = 'center';
+            app.CFUEditField_4Label.Position = [213 365 30 22];
+            app.CFUEditField_4Label.Text = 'CFU';
+
+            % Create CFUEditField_4
+            app.CFUEditField_4 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_4.HorizontalAlignment = 'center';
+            app.CFUEditField_4.Position = [271 365 100 22];
+
+            % Create CFUEditField_5Label
+            app.CFUEditField_5Label = uilabel(app.UIFigure);
+            app.CFUEditField_5Label.HorizontalAlignment = 'center';
+            app.CFUEditField_5Label.Position = [213 336 30 22];
+            app.CFUEditField_5Label.Text = 'CFU';
+
+            % Create CFUEditField_5
+            app.CFUEditField_5 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_5.HorizontalAlignment = 'center';
+            app.CFUEditField_5.Position = [272 336 100 22];
+
+            % Create CFUEditField_6Label
+            app.CFUEditField_6Label = uilabel(app.UIFigure);
+            app.CFUEditField_6Label.HorizontalAlignment = 'center';
+            app.CFUEditField_6Label.Position = [213 304 30 22];
+            app.CFUEditField_6Label.Text = 'CFU';
+
+            % Create CFUEditField_6
+            app.CFUEditField_6 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_6.HorizontalAlignment = 'center';
+            app.CFUEditField_6.Position = [272 304 100 22];
+
+            % Create CFUEditField_7Label
+            app.CFUEditField_7Label = uilabel(app.UIFigure);
+            app.CFUEditField_7Label.HorizontalAlignment = 'center';
+            app.CFUEditField_7Label.Position = [213 273 30 22];
+            app.CFUEditField_7Label.Text = 'CFU';
+
+            % Create CFUEditField_7
+            app.CFUEditField_7 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_7.HorizontalAlignment = 'center';
+            app.CFUEditField_7.Position = [271 273 100 22];
+
+            % Create CFUEditField_8Label
+            app.CFUEditField_8Label = uilabel(app.UIFigure);
+            app.CFUEditField_8Label.HorizontalAlignment = 'center';
+            app.CFUEditField_8Label.Position = [213 243 30 22];
+            app.CFUEditField_8Label.Text = 'CFU';
+
+            % Create CFUEditField_8
+            app.CFUEditField_8 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_8.HorizontalAlignment = 'center';
+            app.CFUEditField_8.Position = [272 243 100 22];
+
+            % Create CFUEditField_9Label
+            app.CFUEditField_9Label = uilabel(app.UIFigure);
+            app.CFUEditField_9Label.HorizontalAlignment = 'center';
+            app.CFUEditField_9Label.Position = [213 213 30 22];
+            app.CFUEditField_9Label.Text = 'CFU';
+
+            % Create CFUEditField_9
+            app.CFUEditField_9 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_9.HorizontalAlignment = 'center';
+            app.CFUEditField_9.Position = [271 213 100 22];
+
+            % Create CFUEditField_10Label
+            app.CFUEditField_10Label = uilabel(app.UIFigure);
+            app.CFUEditField_10Label.HorizontalAlignment = 'center';
+            app.CFUEditField_10Label.Position = [213 183 30 22];
+            app.CFUEditField_10Label.Text = 'CFU';
+
+            % Create CFUEditField_10
+            app.CFUEditField_10 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_10.HorizontalAlignment = 'center';
+            app.CFUEditField_10.Position = [272 183 100 22];
+
+            % Create CFUEditField_11Label
+            app.CFUEditField_11Label = uilabel(app.UIFigure);
+            app.CFUEditField_11Label.HorizontalAlignment = 'center';
+            app.CFUEditField_11Label.Position = [213 152 30 22];
+            app.CFUEditField_11Label.Text = 'CFU';
+
+            % Create CFUEditField_11
+            app.CFUEditField_11 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_11.HorizontalAlignment = 'center';
+            app.CFUEditField_11.Position = [272 152 100 22];
+
+            % Create CFUEditField_12Label
+            app.CFUEditField_12Label = uilabel(app.UIFigure);
+            app.CFUEditField_12Label.HorizontalAlignment = 'center';
+            app.CFUEditField_12Label.Position = [213 122 30 22];
+            app.CFUEditField_12Label.Text = 'CFU';
+
+            % Create CFUEditField_12
+            app.CFUEditField_12 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_12.HorizontalAlignment = 'center';
+            app.CFUEditField_12.Position = [271 122 100 22];
+
+            % Create VotoEditField_15Label
+            app.VotoEditField_15Label = uilabel(app.UIFigure);
+            app.VotoEditField_15Label.HorizontalAlignment = 'center';
+            app.VotoEditField_15Label.Position = [22 453 30 22];
+            app.VotoEditField_15Label.Text = 'Voto';
+
+            % Create VotoEditField_1
+            app.VotoEditField_1 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_1.HorizontalAlignment = 'center';
+            app.VotoEditField_1.Position = [81 453 100 22];
+
+            % Create CFUEditFieldLabel
+            app.CFUEditFieldLabel = uilabel(app.UIFigure);
+            app.CFUEditFieldLabel.HorizontalAlignment = 'center';
+            app.CFUEditFieldLabel.Position = [213 453 30 22];
+            app.CFUEditFieldLabel.Text = 'CFU';
+
+            % Create CFUEditField_1
+            app.CFUEditField_1 = uieditfield(app.UIFigure, 'numeric');
+            app.CFUEditField_1.HorizontalAlignment = 'center';
+            app.CFUEditField_1.Position = [271 453 100 22];
+
+            % Create MediaPesataEditFieldLabel
+            app.MediaPesataEditFieldLabel = uilabel(app.UIFigure);
+            app.MediaPesataEditFieldLabel.HorizontalAlignment = 'right';
+            app.MediaPesataEditFieldLabel.Position = [227 68 79 22];
+            app.MediaPesataEditFieldLabel.Text = 'Media Pesata';
+
+            % Create MediaPesataEditField
+            app.MediaPesataEditField = uieditfield(app.UIFigure, 'numeric');
+            app.MediaPesataEditField.ValueChangedFcn = createCallbackFcn(app, @MediaPesataEditFieldValueChanged, true);
+            app.MediaPesataEditField.Position = [321 64 52 30];
+
+            % Create CalcoloButton
+            app.CalcoloButton = uibutton(app.UIFigure, 'push');
+            app.CalcoloButton.ButtonPushedFcn = createCallbackFcn(app, @CalcoloButtonPushed, true);
+            app.CalcoloButton.Position = [81 55 99 48];
+            app.CalcoloButton.Text = 'Calcolo';
+
+            % Create VotoEditField_16Label
+            app.VotoEditField_16Label = uilabel(app.UIFigure);
+            app.VotoEditField_16Label.HorizontalAlignment = 'right';
+            app.VotoEditField_16Label.Position = [228 17 33 22];
+            app.VotoEditField_16Label.Text = 'Voto ';
+
+            % Create VotoEditField_16
+            app.VotoEditField_16 = uieditfield(app.UIFigure, 'numeric');
+            app.VotoEditField_16.Position = [276 17 98 22];
+
+            % Create SimoneDeLuca2022Label
+            app.SimoneDeLuca2022Label = uilabel(app.UIFigure);
+            app.SimoneDeLuca2022Label.FontWeight = 'bold';
+            app.SimoneDeLuca2022Label.Position = [23 17 158 23];
+            app.SimoneDeLuca2022Label.Text = 'Simone De Luca 2022';
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = simonevoto
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
